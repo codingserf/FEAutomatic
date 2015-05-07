@@ -165,17 +165,17 @@ src目录结构如下：
 [3]: https://nodejs.org/download/
 [4]: https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md
 
-[git_src]: https://github.com/David-CodingSerf/FEAutomatic/tree/master/FETemplate/src/CatfishFE/FETemplate/src
+[git_src]: https://github.com/David-CodingSerf/FEAutomatic/tree/master/FETemplate/src
 [git_config.js]: https://github.com/David-CodingSerf/FEAutomatic/blob/master/FETemplate/config.js
 [git_gulpfile.js]: https://github.com/David-CodingSerf/FEAutomatic/blob/master/FETemplate/gulpfile.js
-[git_css]: https://github.com/David-CodingSerf/FEAutomatic/tree/master/FETemplate/src/CatfishFE/FETemplate/src/css
-[git_fonts]: https://github.com/David-CodingSerf/FEAutomatic/tree/master/FETemplate/src/CatfishFE/FETemplate/src/fonts
-[git_img]: https://github.com/David-CodingSerf/FEAutomatic/tree/master/FETemplate/src/CatfishFE/FETemplate/src/img
-[git_js]: https://github.com/David-CodingSerf/FEAutomatic/tree/master/FETemplate/src/CatfishFE/FETemplate/src/js
-[git_test]: https://github.com/David-CodingSerf/FEAutomatic/tree/master/FETemplate/src/CatfishFE/FETemplate/src/test
-[git_tpl]: https://github.com/David-CodingSerf/FEAutomatic/tree/master/FETemplate/src/CatfishFE/FETemplate/src/tpl
-[git_views]: https://github.com/David-CodingSerf/FEAutomatic/tree/master/FETemplate/src/CatfishFE/FETemplate/src/views
-[git_page1.html]: https://github.com/David-CodingSerf/FEAutomatic/tree/master/FETemplate/src/CatfishFE/FETemplate/src/page1.html
+[git_css]: https://github.com/David-CodingSerf/FEAutomatic/tree/master/FETemplate/src/css
+[git_fonts]: https://github.com/David-CodingSerf/FEAutomatic/tree/master/FETemplate/src/fonts
+[git_img]: https://github.com/David-CodingSerf/FEAutomatic/tree/master/FETemplate/src/img
+[git_js]: https://github.com/David-CodingSerf/FEAutomatic/tree/master/FETemplate/src/js
+[git_test]: https://github.com/David-CodingSerf/FEAutomatic/tree/master/FETemplate/src/test
+[git_tpl]: https://github.com/David-CodingSerf/FEAutomatic/tree/master/FETemplate/src/tpl
+[git_views]: https://github.com/David-CodingSerf/FEAutomatic/tree/master/FETemplate/src/views
+[git_page1.html]: https://github.com/David-CodingSerf/FEAutomatic/tree/master/FETemplate/src/page1.html
 
 [i_projectRoot]: https://github.com/David-CodingSerf/FEAutomatic/blob/master/FE.lib/temp/mdpics/projectRoot.png?raw=true
 [i_projectSrc]: https://github.com/David-CodingSerf/FEAutomatic/blob/master/FE.lib/temp/mdpics/projectSrc.png?raw=true
