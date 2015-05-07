@@ -1,0 +1,37 @@
+<!-- POS & S1 list -->
+        <div class="container-fluid">
+          <div class="row">
+              <div class="col-xs-12">
+                <a href="#/pos/" class="btn btn-success btn-block btn-lg btn-createpos">
+                    创建POS
+                </a>
+              </div>
+          </div>
+          <div class="row">
+              <div class="alert-tips separate-dotted-bottom">已创建POS和S1如下</div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+            <div class="pos-list">
+
+              <div ng-if="isEmpty" class="alert alert-warning">尚无POS和S1信息<br><small>点击上面的【创建POS】按钮，可添加新的POS</small></div>
+              
+              <div ng-repeat="pos in postasks" class="panel panel-default panel-pos">
+                <div class="panel-heading" ng-switch="pos.status">
+                  <span ng-switch-when="0" class="btn btn-xs btn-info pull-right" disabled>已通过</span>
+                  <a ng-switch-when="1" href="#/pos/?id={{pos.id}}" class="btn btn-xs btn-success pull-right"><span class="glyphicon glyphicon-edit"></span></a>
+                  <div class="pos-title"><a href="#/pos/?id={{pos.id}}&status={{pos.status}}">{{pos.name}}</a></div>
+                </div>
+                <div class="panel-body">
+                  <div class="s1-list">
+                    <a ng-repeat="s1 in pos.s1list" ng-class="{'alert-info':s1.status===0}" class="btn btn-s1 btn-default" href="#s1/?id={{s1.id}}&status={{s1.status}}" role="button">{{s1.name}}</a>
+                    <a href="#/s1/?posid={{pos.id}}&posname={{pos.name}}" class="btn btn-success btn-adds1"><span class="glyphicon glyphicon-plus"></span></a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+      <!-- /POS & S1 list -->

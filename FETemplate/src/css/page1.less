@@ -1,0 +1,150 @@
+a, img {
+    -webkit-touch-callout: none; // 禁止长按链接与图片弹出菜单 
+}
+.glyphicon-refresh-animate {
+    -animation: spin .7s infinite linear;
+    -webkit-animation: spin2 .7s infinite linear;
+}
+
+@-webkit-keyframes spin2 {
+    from { -webkit-transform: rotate(0deg);}
+    to { -webkit-transform: rotate(360deg);}
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
+}
+.loading-modal{
+	display: none;
+	position: fixed;
+	z-index: 99;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255,255,255,0.3);
+}
+.loading{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	z-index: 999;
+	margin-top: -30px;
+	margin-left: -70px;
+}
+.alert-tips{
+	padding: 12px;
+	font-weight: bold;
+	text-align: center;
+}
+.separate-dotted-bottom{
+	border-bottom: 1px dotted #ccc;
+}
+.pos-form,
+.s1-form,
+.alert-belongedPos{
+	margin-top: 20px;
+}
+.input-group-addon:not(:first-child):not(:last-child){
+	border-width: 1px 0;
+}
+.select-group select{
+	border-radius: 0;
+}
+.form-group .select-group .form-control:first-of-type{
+	border-top-right-radius: 4px;
+	border-bottom-width: 0;
+}
+.form-group .select-group .form-control:last-of-type{
+	border-bottom-right-radius: 4px;
+	border-top-width: 0;
+}
+.form-panel{
+	color: #555;
+	background-color: #eee;
+	border: 1px solid #ccc;
+	overflow: hidden;
+	margin-bottom: 0;
+}
+.form-panel .panel-heading{
+	border-bottom: 1px solid #ccc;
+	padding: 6px 12px;
+}
+.form-panel .panel-body{
+	background-color: #fff;
+	padding: 0;
+	position: relative;
+}
+.form-panel .panel-body-mask{
+	position: absolute;
+	z-index: 10;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255,255,255,0.01);
+}
+
+.has-error .form-panel {
+  border-color: #a94442;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+}
+.has-error .panel-heading{
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #a94442;
+}
+.img-block{
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.btn-createpos{
+	margin-top: 20px;
+}
+.pos-list{
+	margin-top: 20px;
+}
+.panel-pos{
+	.panel-heading{
+		padding: 10px 6px;
+	}
+	.pos-title{
+		font-weight: bold;
+	}
+	.s1-list{
+		margin: 0 -1.66%;
+		a{
+			display: block;
+			float: left;
+			width: 30%;
+			margin: 1.66%;
+			padding: 8px 6px;
+			overflow: hidden;
+		}
+
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

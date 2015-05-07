@@ -1,0 +1,88 @@
+{
+    "status": 0,
+    "data":  [
+        {
+            "status": 0,  
+            "id": "CFE71FAA-26D8-E411-8442-005056C00008",
+            "name": "苏州多联系商贸有限公司（总部）",
+            "s1list": [
+                {
+                    "status": 1,  
+                    "id": "DAEC5280-AE06-E411-9BA0-AC853D9F54BA",
+                    "name": "赵云"
+                },
+                {
+                    "status": 0,  
+                    "id": "DAEC5280-AE06-E411-9BA0-AC853D9F54BA",
+                    "name": "李大宝"
+                },
+                {
+                    "status": 1,  
+                    "id": "DAEC5280-AE06-E411-9BA0-AC853D9F54BA",
+                    "name": "张飞"
+                },
+                {
+                    "status": 0,  
+                    "id": "DAEC5280-AE06-E411-9BA0-AC853D9F54BA",
+                    "name": "夏侯天涯"
+                }
+
+            ]
+        },
+        {
+            "status": 1,  
+            "id": "CFE71FAA-26D8-E411-8442-005056C00008",
+            "name": "张家港蜂星连锁步行街旗舰工厂店",
+            "s1list": [
+                
+            ]
+        },
+        {
+            "status": 1,  
+            "id": "CFE71FAA-26D8-E411-8442-005056C00008",
+            "name": "张家港蜂星连锁步行街店",
+            "s1list": [
+                {
+                    "status": 0,  
+                    "id": "DAEC5280-AE06-E411-9BA0-AC853D9F54BA",
+                    "name": "王浩"
+                },
+                {
+                    "status": 1,  
+                    "id": "DAEC5280-AE06-E411-9BA0-AC853D9F54BA",
+                    "name": "黄大"
+                },
+                {
+                    "status": 0,  
+                    "id": "DAEC5280-AE06-E411-9BA0-AC853D9F54BA",
+                    "name": "石头哥"
+                },
+                {
+                    "status": 0,  
+                    "id": "DAEC5280-AE06-E411-9BA0-AC853D9F54BA",
+                    "name": "石头哥"
+                },
+                {
+                    "status": 0,  
+                    "id": "DAEC5280-AE06-E411-9BA0-AC853D9F54BA",
+                    "name": "石头哥"
+                },
+                {
+                    "status": 1,  
+                    "id": "DAEC5280-AE06-E411-9BA0-AC853D9F54BA",
+                    "name": "石头哥"
+                },
+                {
+                    "status": 0,  
+                    "id": "DAEC5280-AE06-E411-9BA0-AC853D9F54BA",
+                    "name": "石头哥"
+                },
+                {
+                    "status": 0,  
+                    "id": "DAEC5280-AE06-E411-9BA0-AC853D9F54BA",
+                    "name": "石头哥"
+                }
+            ]
+        }
+    ]
+}

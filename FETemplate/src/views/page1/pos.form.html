@@ -1,0 +1,94 @@
+
+    <!-- pos editor -->
+  	<div class="container-fluid">
+      <div class="row">
+          <div ng-if="pos.status !== 0" class="alert-tips bg-warning text-warning" role="alert">请如实填写下列信息</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="pos-form">
+            <form name="posForm" w5c-form-validate>
+              <fieldset ng-disabled="pos.status === 0">
+                <div class="form-group">
+                  <div class="input-group">
+                    <span class="input-group-addon">门店名称</span>
+                    <input type="text" class="form-control" placeholder="区域名+门店全名" ng-model="pos.name" name="name" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group">
+                    <span class="input-group-addon">门店类别</span>
+                    <select class="form-control" ng-model="pos.type" ng-options="item.code as item.name for item in POSTYPES" name="type" required>
+                      <option value="">请选择类别</option>
+
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group select-group has-danger">
+                    <span class="input-group-addon">所在地区</span>
+                    <select class="form-control" ng-model="pos.provinceCode" ng-change="setAreas(pos.provinceCode,'CITYLIST')" ng-options="item.code as item.name for item in PROVINCELIST" name="provinceCode" required>
+                        <option value="">请选择省(市)</option>
+
+                    </select>
+                    <select class="form-control" ng-model="pos.cityCode" ng-change="setAreas(pos.cityCode,'BLOCKLIST')" ng-options="item.code as item.name for item in CITYLIST" name="cityCode" required>
+                        <option value="">请选择市(县)</option>
+
+                    </select>
+                    <select class="form-control" ng-model="pos.blockCode" ng-options="item.code as item.name for item in BLOCKLIST" name="blockCode" required>
+                        <option value="">请选择县(区)</option>
+
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group">
+                    <span class="input-group-addon">门店地址</span>
+                    <input type="text" class="form-control" placeholder="详细街道地址" ng-model="pos.address" name="address" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class='input-group'>
+                    <span class="input-group-addon">营业时间</span>
+                    <input type='text' class="form-control timepicker-start" value="09:00" ng-model="pos.openningTime" name="openningTime" required/>
+                    <span class="input-group-addon">到</span>
+                    <input type='text' class="form-control timepicker-end" value="21:00" ng-model="pos.closingTime" name="closingTime" required/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group">
+                    <span class="input-group-addon">预估销量</span>
+                    <input type="number" class="form-control" placeholder="台/月" ng-model="pos.salesPerMonth" name="salesPerMonth" required ng-pattern="/^\d+$/"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group">
+                    <span class="input-group-addon">门店电话</span>
+                    <input type="tel" class="form-control" placeholder="固话或店长手机" ng-model="pos.phone" name="phone" required ng-pattern="/^[0-9]{1,12}$/"/>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  
+                  <div class="panel form-panel">
+                    <div class="panel-heading">门店照片<small ng-if="pos.status !== 0" class="text-warning">(正面门面照，清晰店名)</small></div>
+                    <div class="panel-body">
+                      <div class="panel-body-mask" ng-if="pos.status!==0" ng-click="chooseImage()"></div>
+                      <input type="hidden" ng-model="pos.photo" name="photo" required>
+                      <img class="img-block" ng-src="{{photourl}}" alt="">
+                    </div>
+                  </div>
+
+                </div>
+                <button ng-show="pos.status!==0" type="submit" w5c-form-submit="submitPosForm()" class="btn btn-success btn-block btn-lg ng-hide">
+                    提交
+                </button>
+                <div class="alert-tips">
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /pos editor -->

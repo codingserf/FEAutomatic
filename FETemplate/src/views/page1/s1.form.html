@@ -1,0 +1,53 @@
+<!-- s1 editor -->
+  <div class="container-fluid">
+    <div class="row">
+        <div ng-if="s1.status !== 0" class="alert-tips bg-warning text-warning" role="alert">请如实填写下列信息</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div ng-if="s1.operate === 0" class="alert alert-success alert-belongedPos">{{posname}}下属S1</div>
+        <div class="s1-form">
+          <form name="s1Form" w5c-form-validate>
+            <fieldset ng-disabled="s1.status === 0">
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">员工姓名</span>
+                  <input type="text" class="form-control" placeholder="真实姓名" ng-model="s1.idName" name="idName" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">身份证号</span>
+                  <input type="text" class="form-control" placeholder="18位数字" ng-model="s1.idNumber" name="idNumber" required ng-pattern="/^[0-9x]{18}$/">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">手机号码</span>
+                  <input type="tel" class="form-control" placeholder="11位数字" ng-model="s1.phone" name="phone" required ng-pattern="/^[0-9]{11}$/">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="panel form-panel">
+                  <div class="panel-heading">头像照</div>
+                  <div class="panel-body">
+                    <div class="panel-body-mask" ng-if="s1.status!==0" ng-click="chooseImage()"></div>
+                    <input type="hidden" ng-model="s1.photo" name="photo" required>
+                    <img class="img-block" ng-src="{{photourl}}" alt="">
+                  </div>
+                </div>
+              </div>
+
+              <button ng-show="s1.status!==0" type="submit" w5c-form-submit="submitS1Form()" class="btn btn-success btn-block btn-lg ng-hide">
+                  提交
+              </button>
+              <div class="alert-tips">
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- /s1 editor -->

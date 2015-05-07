@@ -1,0 +1,9 @@
+{
+    "status": 0, 
+    "data": {
+        "appId": "wx51b6be916740be1c",
+        "timestamp": "2014-04-03 15:32:33", 
+        "nonceStr": "DAEC5280AE06E4119BA0AC853D9F54BA",  
+        "signature": "0f9de62fce790f9a083d5c99e95740ceb90c27ed" 
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "status": 0,
+    "data": {
+        "status": 1,
+        "name": "家得福手机连锁人民路店",
+        "type": 3,
+        "provinceCode": "320000",
+        "cityCode": "321100",
+        "blockCode": "321100",
+        "address": "昆山市玉山镇人民路31号2楼",
+        "openningTime": "08:30",
+        "closingTime": "21:30",
+        "salesPerMonth": 20,
+        "phone": "13222958231",
+        "photo": "http://image.369518.com/LianDong/2011/12/28/ad027c9a20.jpg"
+    }
+}
