@@ -42,7 +42,7 @@ gulp是插件机制的，一个插件只做一件事，我们需要组合很多�
 
 - **[config.js][git_config.js]**
   congig.js是我们的配置文件，里面的的字段可供开发人员根据当前项目的不同自行修改。每个字段都在后面标注了功能说明方便清晰定义。具体请查看[config.js][git_config.js]。
-  **注：**大部分公用的库文件都可以在CatfishFE/FE.lib下找到，我们为每个常用的库创建了目录，并在每个目录下按版本创建了目录。如果今后你有新的库，或是新的版本要添到CatfishFE/FE.lib中，也请你遵循这样的目录结构。
+  **注：**大部分公用的库文件都可以在CatfishFE/FE.lib下找到，我们为每个常用的库创建了目录，并在每个目录下按版本创建了目录。如果今后你有新的库，或是新的版本要添到CatfishFE/FE.lib中，也请你遵循这样的目录结构。尽量不要在FE.lib下添加无用的demo和doc文件。
 
 - **[gulpfile.js][git_gulpfile.js]**
   gulpfile.js是gulp工具默认要使用的文件，gulpfile.js中我们预设了多个gulp任务。我们可以在终端里输入相应的命令来执行不同的gulp任务，任何gulp任务的执行都要进入到gulpfile.js所在目录才可生效，gulp工具会自动去寻找当前目录下的gulpfile.js中定义的任务去执行。使用此种子项目的过程中不到万不得已是不需要修改此文件的(如果你对gulp配置感兴趣就另当别论了)，我们的修改接口都开放在config.js文件中。
