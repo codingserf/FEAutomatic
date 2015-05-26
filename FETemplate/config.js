@@ -20,14 +20,16 @@ module.exports = {
         },
         "release": { //发布路径
             "dir": "./build/", //!不要忘记最后的斜杠
-            "ver": false //是否要在发布目录下创建版本目录
+            "ver": false, //是否要在发布目录下创建版本目录
+            "rev": true //是否创建rev文件版本
         },
         "api": { //接口路径
             "reg": /test\/json\/([A-Za-z0-9]+)_?.*\.json/g, //测试接口匹配正则
             "rep": "/POSTask/$1" //正式接口替换字符串
         },
         "debug": { //debug服务器路径
-        	"baseDir": "../" //相对根目录，即http://localhost指向的目录
+            "baseDir": "../", //相对根目录，即http://localhost指向的目录
+            "proxy": "" //代理uri
         }
     }
 }

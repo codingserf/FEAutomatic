@@ -13,8 +13,10 @@ var plumber = require('gulp-plumber'); //防止less编译报错阻断watch
 var inject = require('gulp-inject'); //替换html里的内容 和inject相似
 var browserSync = require('browser-sync'); //mobile debug liveload
 var replace = require('gulp-replace'); //替换文件内容
+var rename = require('gulp-rename'); //重命名文件
 var exec = require('child_process').exec; //执行命令行
-var del = require('del');
+var rimraf = require('gulp-rimraf'); //删除文件
+var react = require('gulp-react'); //react jsx编译
 var path = require('path');
 
 var config = require('./config.js'); //加载我们的配置文件
@@ -25,6 +27,9 @@ var css_libs = paths.lib.css;
 var js_libs = paths.lib.js;
 var apiReg = paths.api.reg;
 var apiRep = paths.api.rep;
+var timestamp = new Date();
+var revTemp = (Math.random()*timestamp.getDate()).toString().substr(-3)+(Math.random()*timestamp.getMilliseconds()).toString().substr(-3);
+var rev = paths.release.rev ? '-'+version+'.'+ revTemp : '';
 
 
 /* 源文件 task */
@@ -122,7 +127,7 @@ gulp.task('release:fonts', function() {
         if (val.indexOf(bs_pattern) > -1) {
             var bs_fonts = val.replace(bs_pattern, 'fonts/*');
             gulp.src(bs_fonts)
-                .pipe(gulp.dest(dir_release + 'fonts/'));
+                .pipe(gulp.dest('src/fonts/'));
             return false;
         }
     });
@@ -141,12 +146,18 @@ gulp.task('release:minLibCss', /*['release:fonts'],*/ function() {
     return gulp.src(css_libs)
         .pipe(minifyCSS())
         .pipe(concat('lib.css'))
+        .pipe(rename(function (path) {
+            path.basename += rev;
+        }))
         .pipe(gulp.dest(dir_release + 'css/'));
 });
 //压缩page css
 gulp.task('release:minPageCss', /*['release:fonts'],*/ function() {
     return gulp.src('src/css/*.css')
         .pipe(minifyCSS())
+        .pipe(rename(function (path) {
+            path.basename += rev;
+        }))
         //.pipe(concat('app.css')) 不用连接
         .pipe(gulp.dest(dir_release + 'css/'));
 });
@@ -160,6 +171,9 @@ gulp.task('release:minLibJs', function() {
         .pipe(sourcemaps.init())
         .pipe(uglify())
         .pipe(concat('lib.js'))
+        .pipe(rename(function (path) {
+            path.basename += rev;
+        }))
         .pipe(sourcemaps.write('maps/'))
         .pipe(gulp.dest(dir_release + 'js/'));
 });
@@ -171,6 +185,9 @@ gulp.task('release:minPageJs', function() {
         .pipe(replace(apiReg, apiRep)) //替换
         .pipe(sourcemaps.init())
         .pipe(uglify())
+        .pipe(rename(function (path) {
+            path.basename += rev;
+        }))
         .pipe(sourcemaps.write('maps/'))
         .pipe(gulp.dest(dir_release + 'js/'));
 });
@@ -205,10 +222,10 @@ gulp.task('release:img', ['release:minHtmlImg', 'release:minCssImg']);
 gulp.task('release:inject', ['release:css', 'release:js'], function() {
     var target = gulp.src('src/*.html').pipe(gulp.dest(dir_release + ''));
 
-    var sources_libcss = gulp.src(dir_release + 'css/lib.css', {
+    var sources_libcss = gulp.src(dir_release + 'css/lib'+rev+'.css', {
         read: false
     });
-    var sources_libjs = gulp.src(dir_release + 'js/lib.js', {
+    var sources_libjs = gulp.src(dir_release + 'js/lib'+rev+'.js', {
         read: false
     });
     var sources_pagecss = gulp.src(dir_release + 'css/*.css', {
@@ -231,7 +248,7 @@ gulp.task('release:inject', ['release:css', 'release:js'], function() {
             relative: true,
             starttag: '<!-- inject:page:css -->',
             transform: function(filepath, file, i, length, targetFile) {
-                var srcName = path.basename(filepath, '.css'),
+                var srcName = path.basename(filepath, '.css').replace(rev,''),
                     tarName = path.basename(targetFile.path, '.html');
                 return srcName !== tarName ? null : inject.transform.apply(inject.transform, arguments);
             }
@@ -240,7 +257,7 @@ gulp.task('release:inject', ['release:css', 'release:js'], function() {
             relative: true,
             starttag: '<!-- inject:page:js -->',
             transform: function(filepath, file, i, length, targetFile) {
-                var srcName = path.basename(filepath, '.js'),
+                var srcName = path.basename(filepath, '.js').replace(rev,''),
                     tarName = path.basename(targetFile.path, '.html');
                 return srcName !== tarName ? null : inject.transform.apply(inject.transform, arguments);
             }
@@ -275,7 +292,8 @@ gulp.task('release:minPageHtml', ['release:inject'], function() {
 gulp.task('release:html', ['release:minViewHtml', 'release:minPageHtml']);
 //清除发布目录
 gulp.task('release:clean', function(cb) {
-    del([dir_release + '**'], cb);
+    return gulp.src([dir_release + 'js/**/*.js', dir_release + 'css/**/*.css', dir_release + 'js/maps/*.map'], { read: false })
+    .pipe(rimraf({ force: true }));
 });
 
 //发布(总)
