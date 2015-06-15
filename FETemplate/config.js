@@ -21,7 +21,12 @@ module.exports = {
         "release": { //发布路径
             "dir": "./build/", //!不要忘记最后的斜杠
             "ver": false, //是否要在发布目录下创建版本目录
-            "rev": true //是否创建rev文件版本
+            "rev": true /*
+                            是否创建rev文件版本。我们会在静态资源文件名后追加version和随机rev的信息，
+                            静态资源包括压缩后的公共js和css以及独立页面的js和css，还有存放视图模板html文件的views文件夹
+                            追加rev信息如：lib-v0.0.1.569089.js 或/views-v0.0.1.569089/
+                            rev的目的是灰度发布和清除客户端浏览器缓存
+                        */
         },
         "api": { //接口路径
             "reg": /test\/json\/([A-Za-z0-9]+)_?.*\.json/g, //测试接口匹配正则

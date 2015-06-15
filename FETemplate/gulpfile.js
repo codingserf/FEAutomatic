@@ -15,8 +15,7 @@ var browserSync = require('browser-sync'); //mobile debug liveload
 var replace = require('gulp-replace'); //替换文件内容
 var rename = require('gulp-rename'); //重命名文件
 var exec = require('child_process').exec; //执行命令行
-var rimraf = require('gulp-rimraf'); //删除文件
-var react = require('gulp-react'); //react jsx编译
+var rimraf = require('gulp-rimraf');
 var path = require('path');
 
 var config = require('./config.js'); //加载我们的配置文件
@@ -30,6 +29,8 @@ var apiRep = paths.api.rep;
 var timestamp = new Date();
 var revTemp = (Math.random()*timestamp.getDate()).toString().substr(-3)+(Math.random()*timestamp.getMilliseconds()).toString().substr(-3);
 var rev = paths.release.rev ? '-'+version+'.'+ revTemp : '';
+var viewReg = /(templateUrl\s*:\s*[\'\"])(views)\//g;
+var viewRep = '$1$2'+rev+'/';
 
 
 /* 源文件 task */
@@ -139,7 +140,7 @@ gulp.task('release:fonts', function() {
 //移动 views
 gulp.task('release:views', function() {
     return gulp.src('src/views/**/*.html')
-        .pipe(gulp.dest(dir_release + 'views/'));
+        .pipe(gulp.dest(dir_release + 'views'+rev+'/'));
 });
 //压缩lib css
 gulp.task('release:minLibCss', /*['release:fonts'],*/ function() {
@@ -167,7 +168,8 @@ gulp.task('release:css', ['release:minLibCss', 'release:minPageCss']);
 //压缩 lib js
 gulp.task('release:minLibJs', function() {
     return gulp.src(js_libs)
-        .pipe(replace(apiReg, apiRep)) //替换
+        .pipe(replace(apiReg, apiRep)) //替换api路径
+        .pipe(replace(viewReg, viewRep)) //替换view rev
         .pipe(sourcemaps.init())
         .pipe(uglify())
         .pipe(concat('lib.js'))
@@ -182,7 +184,8 @@ gulp.task('release:minPageJs', function() {
     return gulp.src('src/js/*.js')
         .pipe(jshint())
         .pipe(jshint.reporter('default'))
-        .pipe(replace(apiReg, apiRep)) //替换
+        .pipe(replace(apiReg, apiRep)) //替换api路径
+        .pipe(replace(viewReg, viewRep)) //替换view rev
         .pipe(sourcemaps.init())
         .pipe(uglify())
         .pipe(rename(function (path) {
@@ -274,7 +277,7 @@ gulp.task('release:minViewHtml', ['release:views'], function() {
     };
     return gulp.src(dir_release + 'views/**/*.html')
         .pipe(minifyHTML(opts))
-        .pipe(gulp.dest(dir_release + 'views/'));
+        .pipe(gulp.dest(dir_release + 'views'+rev+'/'));
 });
 //压缩 page html
 gulp.task('release:minPageHtml', ['release:inject'], function() {
@@ -292,7 +295,7 @@ gulp.task('release:minPageHtml', ['release:inject'], function() {
 gulp.task('release:html', ['release:minViewHtml', 'release:minPageHtml']);
 //清除发布目录
 gulp.task('release:clean', function(cb) {
-    return gulp.src([dir_release + 'js/**/*.js', dir_release + 'css/**/*.css', dir_release + 'js/maps/*.map'], { read: false })
+    return gulp.src([dir_release + 'js/**/*.js', dir_release + 'css/**/*.css', dir_release + 'js/maps/*.map',dir_release + 'view*/'], { read: false })
     .pipe(rimraf({ force: true }));
 });
 
