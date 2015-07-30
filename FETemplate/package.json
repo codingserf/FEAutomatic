@@ -1,0 +1,22 @@
+{
+    "dependencies": {
+        "gulp": "latest",
+		"gulp-jshint": "latest",
+        "gulp-concat": "latest",
+        "gulp-uglify": "latest",
+        "gulp-less": "latest",
+        "gulp-sass": "latest",
+        "gulp-minify-css": "latest",
+        "gulp-minify-html": "latest",
+        "gulp-sourcemaps": "latest",
+        "gulp-imagemin": "latest",
+        "gulp-cache": "latest",
+        "gulp-plumber": "latest",
+        "gulp-inject": "latest",
+        "browser-sync": "latest",
+        "gulp-replace": "latest",
+        "path": "latest",
+        "gulp-rename": "latest",
+        "gulp-rimraf": "latest"
+    }
+}
